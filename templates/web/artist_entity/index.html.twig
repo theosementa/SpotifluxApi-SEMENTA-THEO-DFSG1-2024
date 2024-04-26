@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ArtistEntity index{% endblock %}
+
+{% block body %}
+<div class="container p-5">
+    <h1>Artists</h1>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for artist_entity in artist_entities %}
+            <tr>
+                <td>{{ artist_entity.id }}</td>
+                <td>{{ artist_entity.name }}</td>
+                <td>
+                    <a href="{{ path('app_web_artist_entity_show', {'id': artist_entity.id}) }}" class="btn btn-primary">show</a>
+                    <a href="{{ path('app_web_artist_entity_edit', {'id': artist_entity.id}) }}" class="btn btn-secondary">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_web_artist_entity_new') }}" class="btn btn-primary mt-3">Create artist</a>
+</div>
+{% endblock %}

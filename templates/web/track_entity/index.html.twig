@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TrackEntity index{% endblock %}
+
+{% block body %}
+<div class="container p-5">
+    <h1>Tracks</h1>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Duration</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for track_entity in track_entities %}
+            <tr>
+                <td>{{ track_entity.id }}</td>
+                <td>{{ track_entity.title }}</td>
+                <td>{{ track_entity.duration }}</td>
+                <td>
+                    <a href="{{ path('app_web_track_entity_show', {'id': track_entity.id}) }}" class="btn btn-primary">show</a>
+                    <a href="{{ path('app_web_track_entity_edit', {'id': track_entity.id}) }}" class="btn btn-secondary">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_web_track_entity_new') }}" class="btn btn-primary mt-3">Create track</a>
+</div>
+{% endblock %}

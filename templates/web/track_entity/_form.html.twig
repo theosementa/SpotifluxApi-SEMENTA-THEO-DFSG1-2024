@@ -1,0 +1,20 @@
+{{ form_start(form, {'attr': {'class': 'form-style'}}) }}
+
+    <div class="mb-3">
+        {{ form_label(form.title, 'Title', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_label(form.duration, 'Duration', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.duration, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_label(form.albumEntity, 'Albums', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.albumEntity, {'attr': {'class': 'form-select'}}) }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+
+{{ form_end(form) }}

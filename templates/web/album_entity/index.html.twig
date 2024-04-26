@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AlbumEntity index{% endblock %}
+
+{% block body %}
+<div class="container p-5">
+    <h1>Albums</h1>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Year</th>
+                <th>Artist</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for album_entity in album_entities %}
+            <tr>
+                <td>{{ album_entity.id }}</td>
+                <td>{{ album_entity.name }}</td>
+                <td>{{ album_entity.year }}</td>
+                <td>{{ album_entity.artist.name }}</td>
+                <td>
+                    <a href="{{ path('app_web_album_entity_show', {'id': album_entity.id}) }}" class="btn btn-primary">show</a>
+                    <a href="{{ path('app_web_album_entity_edit', {'id': album_entity.id}) }}" class="btn btn-secondary">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_web_album_entity_new') }}" class="btn btn-primary mt-3">Create album</a>
+</div>
+{% endblock %}
